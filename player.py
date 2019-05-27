@@ -1,6 +1,6 @@
 
 class Player:
-    VERSION = "V 2.0"
+    VERSION = "V 1.0"
 
     # This is a comment
 
