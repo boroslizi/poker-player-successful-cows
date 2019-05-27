@@ -10,16 +10,17 @@ class Player:
 
         for player in players:
             if player['id'] == id:
+                hold_bet = game_state['current_buy_in'] - player['bet']
                 our_cards = player['hole_cards']
                 if our_cards[0]['rank'] == our_cards[1]['rank'] and Player.CARD_VALUES[our_cards[0]['rank']] >= 7:
-                    return game_state['current_buy_in'] - player['bet']
+                    return hold_bet
                 for card in our_cards:
                     if Player.CARD_VALUES[card['rank']] >= 7:
                         for com_card in game_state['community_cards']:
                             if card['rank'] == com_card['rank']:
-                                return game_state['current_buy_in'] - player['bet']
+                                return hold_bet
                     if Player.CARD_VALUES[card['rank']] >= 10:
-                        return game_state['current_buy_in'] - player['bet']
+                        return hold_bet
 
         return 0
 
