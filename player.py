@@ -15,6 +15,9 @@ class Player:
                 if game_state['round'] == 0:
                     return hold_bet + game_state['minimum_raise']
                 if our_cards[0]['rank'] == our_cards[1]['rank'] and Player.CARD_VALUES[our_cards[0]['rank']] >= 9:
+                    for com_card in game_state['community_cards']:
+                        if our_cards[0]['rank'] == com_card['rank']:
+                            return hold_bet + game_state['minimum_raise']*3
                     return hold_bet
                 for card in our_cards:
                     if Player.CARD_VALUES[card['rank']] >= 9:
