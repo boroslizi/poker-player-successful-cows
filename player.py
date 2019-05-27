@@ -12,18 +12,28 @@ class Player:
             if player['id'] == id:
                 hold_bet = game_state['current_buy_in'] - player['bet']
                 our_cards = player['hole_cards']
+
+                # raise once in the first round only
                 if game_state['round'] == 0:
                     return hold_bet + game_state['minimum_raise']
+
+                # check for pair in our hand (at least 9)
                 if our_cards[0]['rank'] == our_cards[1]['rank'] and Player.CARD_VALUES[our_cards[0]['rank']] >= 9:
                     for com_card in game_state['community_cards']:
+
+                        # check for drill from our hand and the community cards
                         if our_cards[0]['rank'] == com_card['rank']:
                             return hold_bet + game_state['minimum_raise']*3
                     return hold_bet
+
+                # check for pair from our hand and the community cards
                 for card in our_cards:
                     if Player.CARD_VALUES[card['rank']] >= 9:
                         for com_card in game_state['community_cards']:
                             if card['rank'] == com_card['rank']:
                                 return hold_bet
+
+                    # no pair, cards higher than 9 (only raise til call is less than 10% of our stack)
                     if Player.CARD_VALUES[card['rank']] >= 10 and hold_bet < player['stack']*0.1:
                         return hold_bet
 
