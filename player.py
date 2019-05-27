@@ -19,11 +19,18 @@ class Player:
 
                 # check for pair in our hand (at least 9)
                 if our_cards[0]['rank'] == our_cards[1]['rank'] and Player.CARD_VALUES[our_cards[0]['rank']] >= 9:
-                    for com_card in game_state['community_cards']:
+                    for i in range(len(game_state['community_cards'])):
 
                         # check for drill from our hand and the community cards
-                        if our_cards[0]['rank'] == com_card['rank']:
+                        if our_cards[0]['rank'] == game_state['community_cards'][i]['rank']:
+
+                            # check for poker from our hand and the community cards
+                            for j in range(i+1, len(game_state['community_cards'])):
+                                if our_cards[0]['rank'] == game_state['community_cards'][j]['rank']:
+                                    return hold_bet + game_state['minimum_raise'] * 6
+
                             return hold_bet + game_state['minimum_raise']*3
+
                     return hold_bet
 
                 # check for pair from our hand and the community cards
