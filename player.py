@@ -14,8 +14,8 @@ class Player:
                 our_cards = player['hole_cards']
 
                 # raise once in the first round only
-                if not game_state['community_cards']:
-                    return hold_bet + game_state['minimum_raise']
+                # if not game_state['community_cards']:
+                #     return hold_bet + game_state['minimum_raise']
 
                 # check for pair in our hand (at least 9)
                 if our_cards[0]['rank'] == our_cards[1]['rank'] and Player.CARD_VALUES[our_cards[0]['rank']] >= 9:
