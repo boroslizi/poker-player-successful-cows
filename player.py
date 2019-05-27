@@ -34,7 +34,7 @@ class Player:
 
                 # check for pair from our hand and the community cards
                 for card in our_cards:
-                    if Player.CARD_VALUES[card['rank']] >= 9:
+                    if Player.CARD_VALUES[card['rank']] >= 9 and player['bet'] + hold_bet < player['stack'] * 0.5:
                         for com_card in game_state['community_cards']:
                             if card['rank'] == com_card['rank']:
                                 return hold_bet
