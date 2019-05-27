@@ -18,7 +18,7 @@ class Player:
                     return hold_bet + game_state['minimum_raise']
 
                 # check for pair in our hand (at least 9)
-                if our_cards[0]['rank'] == our_cards[1]['rank'] and Player.CARD_VALUES[our_cards[0]['rank']] >= 9:
+                if our_cards[0]['rank'] == our_cards[1]['rank'] and Player.CARD_VALUES[our_cards[0]['rank']] >= 3:
                     for i in range(len(game_state['community_cards'])):
 
                         # check for drill from our hand and the community cards
@@ -41,8 +41,8 @@ class Player:
                                 return hold_bet
 
                     # no pair, cards higher than 9 (only raise til call is less than 10% of our stack)
-                    if Player.CARD_VALUES[card['rank']] >= 10 and hold_bet < player['stack']*0.1:
-                        return hold_bet
+                    # if Player.CARD_VALUES[card['rank']] >= 10 and hold_bet < player['stack']*0.1:
+                    #     return hold_bet
 
         return 0
 
