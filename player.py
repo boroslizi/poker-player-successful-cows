@@ -12,10 +12,10 @@ class Player:
             if player['id'] == id:
                 our_cards = player['hole_cards']
                 if our_cards[0]['rank'] == our_cards[1]['rank']:
-                    return player['stack']
-                for card in our_cards:
-                    if card['rank'] in "JQKA":
-                        return game_state['current_buy_in'] - player['bet'] + game_state['minimum_raise']
+                    return game_state['current_buy_in'] - player['bet'] + game_state['minimum_raise']
+                # for card in our_cards:
+                #     if card['rank'] in "JQKA":
+                #         return game_state['current_buy_in'] - player['bet'] + game_state['minimum_raise']
 
         return 0
 
