@@ -13,7 +13,7 @@ class Player:
                     if card['rank'] in "JQKA":
                         return game_state['current_buy_in'] - player['bet'] + game_state['minimum_raise']
 
-        # return 30
+        return 0
 
     def showdown(self, game_state):
         pass
