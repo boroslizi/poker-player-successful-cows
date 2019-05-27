@@ -14,7 +14,7 @@ class Player:
                 our_cards = player['hole_cards']
 
                 # raise once in the first round only
-                if game_state['round'] == 0:
+                if not game_state['community_cards']:
                     return hold_bet + game_state['minimum_raise']
 
                 # check for pair in our hand (at least 9)
@@ -27,7 +27,7 @@ class Player:
                             # check for poker from our hand and the community cards
                             for j in range(i+1, len(game_state['community_cards'])):
                                 if our_cards[0]['rank'] == game_state['community_cards'][j]['rank']:
-                                    return hold_bet + game_state['minimum_raise'] * 6
+                                    return hold_bet + game_state['minimum_raise']*6
 
                             return hold_bet + game_state['minimum_raise']*3
 
