@@ -14,10 +14,10 @@ class Player:
                 our_cards = player['hole_cards']
                 for card in our_cards:
                     sum += Player.CARD_VALUES[card["rank"]]
-                if sum >= 16:
-                    return game_state['current_buy_in'] - player['bet'] + game_state['minimum_raise']
-                elif sum >= 12:
-                    return game_state['current_buy_in'] - player['bet']
+                    if card in "JQKA":
+                        return game_state['current_buy_in'] - player['bet'] + game_state['minimum_raise']
+                # if sum >= 16:
+                #     return game_state['current_buy_in'] - player['bet']
 
         return 0
 
