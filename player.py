@@ -1,4 +1,3 @@
-
 class Player:
     VERSION = "V 18"
     CARD_VALUES = {"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "J": 11,
@@ -25,11 +24,11 @@ class Player:
                         if our_cards[0]['rank'] == game_state['community_cards'][i]['rank']:
 
                             # check for poker from our hand and the community cards
-                            for j in range(i+1, len(game_state['community_cards'])):
+                            for j in range(i + 1, len(game_state['community_cards'])):
                                 if our_cards[0]['rank'] == game_state['community_cards'][j]['rank']:
-                                    return hold_bet + game_state['minimum_raise']*6
+                                    return hold_bet + game_state['minimum_raise'] * 6
 
-                            return hold_bet + game_state['minimum_raise']*3
+                            return hold_bet + game_state['minimum_raise'] * 3
 
                     return hold_bet
 
@@ -41,12 +40,10 @@ class Player:
                                 return hold_bet
 
                     # no pair, cards higher than 9 (only raise til call is less than 10% of our stack)
-                    if Player.CARD_VALUES[card['rank']] >= 10 and hold_bet < player['stack']*0.1:
+                    if Player.CARD_VALUES[card['rank']] >= 10 and player['bet'] + hold_bet < player['stack'] * 0.1:
                         return hold_bet
 
         return 0
 
     def showdown(self, game_state):
         pass
-
-
