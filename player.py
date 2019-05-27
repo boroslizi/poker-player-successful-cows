@@ -1,8 +1,6 @@
 
 class Player:
-    VERSION = "V 1.0"
-
-    # This is a comment
+    VERSION = "Én"
 
     def betRequest(self, game_state):
         return 0
