@@ -19,7 +19,7 @@ class Player:
                         for com_card in game_state['community_cards']:
                             if card['rank'] == com_card['rank']:
                                 return hold_bet
-                    if Player.CARD_VALUES[card['rank']] >= 10:
+                    if Player.CARD_VALUES[card['rank']] >= 10 and hold_bet < player['stack']*0.1:
                         return hold_bet
 
         return 0
