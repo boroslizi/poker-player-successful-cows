@@ -13,7 +13,7 @@ class Player:
             if player['id'] == id:
                 our_cards = player['hole_cards']
                 for card in our_cards:
-                    sum += player.CARD_VALUES[card["rank"]]
+                    sum += Player.CARD_VALUES[card["rank"]]
                 if sum >= 16:
                     return game_state['current_buy_in'] - player['bet'] + game_state['minimum_raise']
                 elif sum >= 12:
