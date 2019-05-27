@@ -14,6 +14,10 @@ class Player:
                 if our_cards[0]['rank'] == our_cards[1]['rank'] and Player.CARD_VALUES[our_cards[0]['rank']] >= 7:
                     return game_state['current_buy_in'] - player['bet']
                 for card in our_cards:
+                    if Player.CARD_VALUES[card['rank']] >= 7:
+                        for com_card in game_state['community_cards']:
+                            if card['rank'] == com_card['rank']:
+                                return game_state['current_buy_in'] - player['bet']
                     if Player.CARD_VALUES[card['rank']] >= 10:
                         return game_state['current_buy_in'] - player['bet']
 
