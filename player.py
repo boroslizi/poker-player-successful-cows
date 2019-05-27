@@ -5,8 +5,7 @@ class Player:
     # This is a comment
 
     def betRequest(self, game_state):
-        return 0
+        return 12
 
     def showdown(self, game_state):
         pass
-
