@@ -7,13 +7,15 @@ class Player:
     def betRequest(self, game_state):
         players = game_state['players']
         id = game_state['in_action']
-        sum = 0
+        # sum = 0
 
         for player in players:
             if player['id'] == id:
                 our_cards = player['hole_cards']
+                if our_cards[0]['rank'] == our_cards[1]['rank']:
+                    return player['stack']
                 for card in our_cards:
-                    sum += Player.CARD_VALUES[card["rank"]]
+                    # sum += Player.CARD_VALUES[card["rank"]]
                     if card in "JQKA":
                         return game_state['current_buy_in'] - player['bet'] + game_state['minimum_raise']
                 # if sum >= 16:
