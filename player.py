@@ -11,11 +11,11 @@ class Player:
         for player in players:
             if player['id'] == id:
                 our_cards = player['hole_cards']
-                if our_cards[0]['rank'] == our_cards[1]['rank']:
-                    return game_state['current_buy_in'] - player['bet'] + game_state['minimum_raise']
-                # for card in our_cards:
-                #     if card['rank'] in "JQKA":
-                #         return game_state['current_buy_in'] - player['bet'] + game_state['minimum_raise']
+                if our_cards[0]['rank'] == our_cards[1]['rank'] and Player.CARD_VALUES[our_cards[0]['rank']] >= 7:
+                    return game_state['current_buy_in'] - player['bet']
+                for card in our_cards:
+                    if Player.CARD_VALUES[card['rank']] >= 10:
+                        return game_state['current_buy_in'] - player['bet']
 
         return 0
 
